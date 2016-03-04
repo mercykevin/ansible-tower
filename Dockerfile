@@ -5,6 +5,16 @@ FROM ubuntu:14.04
 MAINTAINER ybaltouski@gmail.com
 
 ENV ANSIBLE_TOWER_VER 2.4.4
+RUN locale-gen en_US.UTF-8
+ENV LANG en_US.UTF-8 
+ENV LANGUAGE en_US:en
+ENV LC_ALL en_US.UTF-8
+RUN echo 'export LC_ALL="en_US.UTF-8"' >> /root/.bashrc
+
+RUN touch /etc/default/locale
+RUN echo 'LANG="en_US.UTF-8"' >> /etc/default/locale
+RUN echo 'LANGUAGE="en_US:en"' >> /etc/default/locale
+
 ENV PG_DATA /var/lib/postgresql/9.4/main
 
 RUN apt-get install -y software-properties-common \
